@@ -8,7 +8,7 @@ class RecipeFacade
 
     {
       recipes: recipes,
-      next_page: recipe_data[:_links][:next][:href]
+      next_page: nil
     }
   end
 end
