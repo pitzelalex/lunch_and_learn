@@ -11,7 +11,7 @@ describe 'Recipes API' do
 
       expect(recipes).to have_key(:data)
       expect(recipes[:data]).to be_an Array
-      expect(recipes[:data][0][:id]).to be null
+      expect(recipes[:data][0][:id]).to be nil
       expect(recipes[:data][0][:type]).to eq('recipe')
       expect(recipes[:data][0][:attributes]).to be_a Hash
       expect(recipes[:data][0][:attributes][:title]).to be_a String
