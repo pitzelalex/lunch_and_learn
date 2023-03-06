@@ -1,5 +1,7 @@
 class Api::V1::TouristSightsController < ApplicationController
   def index
-    country = TouristSightsFacade.country(params[:country])
+    sights = TouristSightsFacade.country(params[:country])
+
+    render json: TouristSightSerializer.new(sights)
   end
 end
