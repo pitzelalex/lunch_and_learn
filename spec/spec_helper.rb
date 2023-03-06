@@ -10,7 +10,8 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
-  # config.filter_sensitive_data('<watch_mode_api_key>') { ENV['watch_mode_api_key'] }
+  config.filter_sensitive_data('<edamam_app_id>') { ENV['edamam_app_id'] }
+  config.filter_sensitive_data('<edamam_app_key>') { ENV['edamam_app_key'] }
   config.configure_rspec_metadata!
 end
 
