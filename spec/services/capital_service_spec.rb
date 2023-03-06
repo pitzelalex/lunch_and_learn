@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CapitalService do
   describe '#get' do
-    it 'returns a hash of lattitude and longditude of capital of country', :vcr do
+    it 'returns fetches required details about a country', :vcr do
       response = CapitalService.get('Canada')
 
       expect(response).to be_an Array
