@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RecipeService do
   describe '#get' do
-    it 'returns an array of recipes', :vcr do
+    it 'returns an array of recipes by country', :vcr do
       response = RecipeService.get('Thailand')
 
       expect(response).to have_key(:_links)
