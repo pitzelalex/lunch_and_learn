@@ -1,0 +1,88 @@
+{
+  "type": "Feature",
+  "properties": {
+      "name": "Royal Canadian Mint",
+      "country": "Canada",
+      "country_code": "ca",
+      "state": "Ontario",
+      "county": "Eastern Ontario",
+      "city": "(Old) Ottawa",
+      "postcode": "K1A 0G8",
+      "district": "Byward Market",
+      "suburb": "Rideau-Vanier",
+      "street": "Sussex Drive",
+      "housenumber": "320",
+      "lon": -75.69926032752613,
+      "lat": 45.431450999999996,
+      "state_code": "ON",
+      "formatted": "Royal Canadian Mint, 320 Sussex Drive, (Old) Ottawa, ON K1A 0G8, Canada",
+      "address_line1": "Royal Canadian Mint",
+      "address_line2": "320 Sussex Drive, (Old) Ottawa, ON K1A 0G8, Canada",
+      "categories": [
+          "building",
+          "building.commercial",
+          "building.historic",
+          "building.office",
+          "building.tourism",
+          "heritage",
+          "office",
+          "office.government",
+          "tourism",
+          "tourism.attraction",
+          "tourism.sights",
+          "wheelchair",
+          "wheelchair.yes"
+      ],
+      "details": [
+          "details",
+          "details.building",
+          "details.contact",
+          "details.facilities",
+          "details.heritage",
+          "details.wiki_and_media"
+      ],
+      "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database Licence",
+          "url": "https://www.openstreetmap.org/copyright",
+          "raw": {
+              "name": "Royal Canadian Mint",
+              "phone": "+1-613-993-8990",
+              "office": "government",
+              "osm_id": 68588512,
+              "name:de": "Königlich Kanadisches Münzamt",
+              "name:en": "Royal Canadian Mint",
+              "name:fr": "Monnaie royale canadienne",
+              "ref:hpc": 9212,
+              "tourism": "attraction",
+              "website": "https://www.mint.ca/",
+              "building": "commercial",
+              "heritage": 2,
+              "historic": "building",
+              "osm_type": "w",
+              "wikidata": "Q20191089",
+              "mapillary": 801287210513834,
+              "wheelchair": "yes",
+              "addr:street": "Sussex Drive",
+              "addr:postcode": "K1A 0G8",
+              "opening_hours": "Mo-Su 09:00-17:00",
+              "short_name:en": "RCM",
+              "hsmbc:criteria": "nhs",
+              "building:levels": 3,
+              "addr:housenumber": 320,
+              "heritage:website": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=9212",
+              "heritage:operator": "hsmbc",
+              "hsmbc:inscription_date": "1979-11-15"
+          }
+      },
+      "place_id": "5178ea2272c0ec52c059d4d65edb37b74640f00102f901e093160400000000920313526f79616c2043616e616469616e204d696e74"
+  },
+  "geometry": {
+      "type": "Point",
+      "coordinates": [
+          -75.69924596223598,
+          45.43139211779422
+      ]
+  }
+}
