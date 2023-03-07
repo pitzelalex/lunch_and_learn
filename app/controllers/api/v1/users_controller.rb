@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   def create
     user = User.new(user_params)
-    require 'pry'; binding.pry
+
     if user.save
       render json: UserSerializer.new(User.last), status: 201
     end
