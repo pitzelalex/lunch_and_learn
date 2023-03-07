@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://youtube.googleapis.com/youtube/v3/search?channelId=UCluQ5yInbeAkkeCndNnUhpw&key=AIzaSyC_hvs-77_L9E6eFyUpPyy1RIq6X377730&maxResults=5&part=snippet&q=thailand&type=video
+    uri: https://youtube.googleapis.com/youtube/v3/search?channelId=UCluQ5yInbeAkkeCndNnUhpw&key=<youtube_api_key>&maxResults=5&part=snippet&q=thailand&type=video
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 07 Mar 2023 01:52:12 GMT
+      - Tue, 07 Mar 2023 02:19:01 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -227,5 +227,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Tue, 07 Mar 2023 01:52:12 GMT
+  recorded_at: Tue, 07 Mar 2023 02:19:01 GMT
 recorded_with: VCR 6.1.0
