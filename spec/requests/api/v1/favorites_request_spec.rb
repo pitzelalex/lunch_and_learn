@@ -77,5 +77,17 @@ RSpec.describe 'Favorites API' do
       expect(favorites[:data][1][:attributes][:recipe_title]).to eq('food 2')
       expect(favorites[:data][2][:attributes][:recipe_title]).to eq('food 3')
     end
+
+    it 'returns an error if api_key is invalid' do
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json' }
+
+      get '/api/v1/favorites?api_key=12345678910', headers: headers
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(error[:errors][0][:title]).to eq('not_found')
+      expect(error[:errors][0][:detail]).to eq("Couldn't find User")
+    end
   end
 end
