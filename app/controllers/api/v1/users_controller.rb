@@ -4,6 +4,8 @@ class Api::V1::UsersController < ApplicationController
 
     if user.save
       render json: UserSerializer.new(User.last), status: 201
+    else
+      render json: ErrorSerializer.new(user)
     end
   end
 

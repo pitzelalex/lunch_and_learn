@@ -32,5 +32,26 @@ RSpec.describe 'Users API' do
       expect(new_user[:data][:attributes]).to have_key(:api_key)
       expect(new_user[:data][:attributes][:api_key]).to be_a String
     end
+
+    it 'returns an error if the email already exists in the database' do
+      user_params = {
+        name: 'Alex',
+        email: 'pitzelalex@gmail.com'
+      }
+      User.create!(name: 'test', email: 'pitzelalex@gmail.com', api_key: '7p21pagJYbM7nMuT782QkA')
+
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json' }
+
+      post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error).to be_a Hash
+      expect(error[:errors]).to be_an Array
+      expect(error[:errors][0]).to have_key(:title)
+      expect(error[:errors][0][:title]).to be_a String
+      expect(error[:errors][0]).to have_key(:detail)
+      expect(error[:errors][0][:detail]).to be_a String
+    end
   end
 end
