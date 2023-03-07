@@ -1,6 +1,6 @@
 class CountryFacade
   def self.random
-    country_data = Rails.cache.fetch('all_countries', expires_in: 12.seconds) do
+    country_data = Rails.cache.fetch('all_countries', expires_in: 12.hours) do
       CountryService.all
     end
 
