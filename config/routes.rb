@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :recipes, only: %i[index]
       resources :learning_resources, only: %i[index]
       resources :users
+      resources :favorites
     end
   end
 end
