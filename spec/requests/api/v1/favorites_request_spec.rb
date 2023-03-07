@@ -89,5 +89,18 @@ RSpec.describe 'Favorites API' do
       expect(error[:errors][0][:title]).to eq('not_found')
       expect(error[:errors][0][:detail]).to eq("Couldn't find User")
     end
+
+    it 'returns an empty array if user has no favorites' do
+      user = User.create(name: 'Alex', email: 'email', api_key: '12345')
+
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json' }
+
+      get '/api/v1/favorites?api_key=12345', headers: headers
+
+      favorites = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(favorites[:data]).to eq([])
+    end
   end
 end
