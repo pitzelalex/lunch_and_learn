@@ -5,7 +5,7 @@ RSpec.describe YoutubeFacade do
     it 'returns a Youtube Video Object', :vcr do
       video = YoutubeFacade.get('thailand')
 
-      expect(video).to be_a YoutubeVideo
+      expect(video).to be_a Video
     end
   end
 end

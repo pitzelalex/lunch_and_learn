@@ -4,6 +4,6 @@ class YoutubeFacade
       YoutubeService.get(query)
     end
 
-    YoutubeVideo.new(details[:items].first)
+    Video.new(details[:items].first)
   end
 end
