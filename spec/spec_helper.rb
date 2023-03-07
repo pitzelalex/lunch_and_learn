@@ -13,6 +13,8 @@ VCR.configure do |config|
   config.filter_sensitive_data('<edamam_app_id>') { ENV['edamam_app_id'] }
   config.filter_sensitive_data('<edamam_app_key>') { ENV['edamam_app_key'] }
   config.filter_sensitive_data('<youtube_api_key>') { ENV['youtube_api_key'] }
+  config.filter_sensitive_data('<unsplash_secret_key>') { ENV['unsplash_secret_key'] }
+  config.filter_sensitive_data('<unsplash_access_key>') { ENV['unsplash_access_key'] }
   config.configure_rspec_metadata!
 end
 
