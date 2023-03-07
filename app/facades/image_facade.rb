@@ -4,8 +4,12 @@ class ImageFacade
       ImageService.get(query)
     end
 
-    details[:results].map do |image|
-      Image.new(image)
+    if details[:results].count > 0
+      details[:results].map do |image|
+        Image.new(image)
+      end
+    else
+      []
     end
   end
 end

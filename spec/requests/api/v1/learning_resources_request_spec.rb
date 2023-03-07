@@ -25,5 +25,25 @@ describe 'Learning Resources API' do
         expect(image[:url]).to be_a String
       end
     end
+
+    it 'returns an empty hash for the video field if no matches' do
+      get '/api/v1/learning_resources?country=supercalafragalisticexpialadocious'
+
+      expect(response).to be_successful
+
+      resource = JSON.parse(response.body, symbolize_names: true)
+
+      expect(resource[:data][:attributes][:video]).to eq({})
+    end
+
+    it 'returns an empty array for the images field if no matches' do
+      get '/api/v1/learning_resources?country=supercalafragalisticexpialadocious'
+
+      expect(response).to be_successful
+
+      resource = JSON.parse(response.body, symbolize_names: true)
+
+      expect(resource[:data][:attributes][:images]).to eq([])
+    end
   end
 end

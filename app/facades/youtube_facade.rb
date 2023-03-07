@@ -4,6 +4,10 @@ class YoutubeFacade
       YoutubeService.get(query)
     end
 
-    Video.new(details[:items].first)
+    if details[:items].count > 0
+      Video.new(details[:items].first)
+    else
+      {}
+    end
   end
 end
