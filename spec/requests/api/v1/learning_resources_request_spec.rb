@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Learning Resources API' do
   describe 'by country' do
-    it 'returns details about a country' do
+    it 'returns details about a country', :vcr do
       get '/api/v1/learning_resources?country=canada'
 
       expect(response).to be_successful
