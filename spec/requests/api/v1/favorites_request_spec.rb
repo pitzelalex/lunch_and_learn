@@ -22,7 +22,28 @@ RSpec.describe 'Favorites API' do
 
       confirmation = JSON.parse(response.body, symbolize_names: true)
 
+      expect(response).to be_successful
       expect(confirmation).to eq({ success: 'Favorite added successfully' })
+    end
+
+    it 'returns an error message if no user matches api_key' do
+      favorite_params = {
+        api_key: 'invalid api key',
+        country: 'thailand',
+        recipe_link: 'http://www.jamieoliver.com/recipes/vegetables-recipes/sriracha/',
+        recipe_title: 'Sriracha'
+      }
+
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json' }
+
+      post '/api/v1/favorites', headers: headers, params: JSON.generate(favorite_params)
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+      expect(error[:errors][0][:title]).to eq('not_found')
+      expect(error[:errors][0][:detail]).to eq("Couldn't find User")
     end
   end
 end
