@@ -47,4 +47,60 @@ RSpec.describe 'Favorites API' do
       expect(error[:errors][0][:detail]).to eq("Couldn't find User")
     end
   end
+
+  describe 'index' do
+    it 'returns a list of a users favorites' do
+      user = User.create(name: 'Alex', email: 'email', api_key: '12345')
+      3.times do |t|
+        user.favorites.create(recipe_title: "food #{t + 1}", recipe_link: "url#{t + 1}", country: "country #{t + 1}")
+      end
+      user2 = User.create(name: 'Other', email: 'other_email', api_key: '54321')
+      3.times do |t|
+        user2.favorites.create(recipe_title: "Other food #{t + 1}", recipe_link: "other url#{t + 1}", country: "other country #{t + 1}")
+      end
+
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json' }
+
+      get "/api/v1/favorites?api_key=#{user.api_key}", headers: headers
+
+      favorites = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(favorites[:data].count).to eq(3)
+      expect(favorites[:data][0]).to have_key(:id)
+      expect(favorites[:data][0][:id]).to be_a String
+      expect(favorites[:data][0][:type]).to eq('favorite')
+      expect(favorites[:data][0][:attributes][:recipe_title]).to eq('food 1')
+      expect(favorites[:data][0][:attributes][:recipe_link]).to eq('url1')
+      expect(favorites[:data][0][:attributes][:country]).to eq('country 1')
+      expect(favorites[:data][0][:attributes][:created_at]).to be_a String
+      expect(favorites[:data][1][:attributes][:recipe_title]).to eq('food 2')
+      expect(favorites[:data][2][:attributes][:recipe_title]).to eq('food 3')
+    end
+
+    it 'returns an error if api_key is invalid' do
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json' }
+
+      get '/api/v1/favorites?api_key=12345678910', headers: headers
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(error[:errors][0][:title]).to eq('not_found')
+      expect(error[:errors][0][:detail]).to eq("Couldn't find User")
+    end
+
+    it 'returns an empty array if user has no favorites' do
+      user = User.create(name: 'Alex', email: 'email', api_key: '12345')
+
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json' }
+
+      get '/api/v1/favorites?api_key=12345', headers: headers
+
+      favorites = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(favorites[:data]).to eq([])
+    end
+  end
 end
